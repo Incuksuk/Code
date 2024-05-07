@@ -1,0 +1,38 @@
+#include<stdio.h>
+#include<stdbool.h>
+#define MAX 10001
+int a[MAX];
+void Swap (int a,int b){
+	int temp;
+	temp=a; 
+	a=b;
+	b=temp;
+}
+void Qsort(int arr[],int l,int r){
+	int ptr2=l;
+	bool check=true;
+	if (r-l+1==1) check=false;
+	for(int ptr1=l; ptr1<= r; ptr1++){
+		if(arr[ptr1] <= arr[r]){
+			ptr2++;
+			if(arr[ptr1] > arr[ptr2])
+				Swap(arr[ptr1],arr[ptr2]);
+		}
+	}
+	if(check == 1){
+		Qsort(arr, l, ptr2-1);
+		Qsort(arr, ptr2+1, r);
+	}
+}
+int main(){
+	int n;	
+	scanf("%d",&n);
+	for (int i=0 ; i<n ;i++){
+		scanf("%d",a[i] ); 
+	}
+	Qsort(a,0,n-1);
+	for(int i=0;i<n;i++){
+		printf("%d\t",a[i]);
+	}
+	return 0;
+}

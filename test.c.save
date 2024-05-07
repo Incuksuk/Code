@@ -1,0 +1,9 @@
+
+#include<stdio.h>
+int main(){
+	float m,kg;
+	scanf("%f%f",&m,&kg);
+	float BMI=kg/(m*m);
+	printf("%.2f",BMI);
+	return 0;
+}
